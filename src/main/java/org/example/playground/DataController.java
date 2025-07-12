@@ -1,10 +1,8 @@
 package org.example.playground;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -30,13 +28,6 @@ public class DataController {
         }
     }
 
-    @GetMapping("/data")
-    @ResponseBody
-    public int getCount() {
-        System.out.println("Now the count is: " + countService.getCount());
-        return countService.getCount();
-    }
-
     @PostMapping("/data/save")
     public ResponseEntity<String> saveData() {
     countService.nextCount();
@@ -51,7 +42,6 @@ public class DataController {
         for (People_count record : allRecords) {
             result.add(record.getCount());
         }
-        //result.removeLast();
         return result;
     }
 }
